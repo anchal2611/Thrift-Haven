@@ -1,43 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Thrift Heaven</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Items - Thrift Haven</title>
   <style>
+    :root {
+      --main-bg: #fcc8d1;
+      --card-bg: #fff;
+      --accent: #c76c86;
+      --dark-accent: #a94f68;
+      --text-dark: #350505;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: pink;
-    }
-    .add-to-cart {
-      background-color: #6e0b25;
-      color: white;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 14px;
-      margin-top: 10px;
-      display: block;
-      width: 100%;
+      background-color: var(--main-bg);
     }
 
-    .add-to-cart:hover {
-      background-color: #5b0920;
-    }
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background-color: #6e0b25;
-      color: white;
-      padding: 15px 20px;
+    /* Navbar */
+    .navbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: rgb(112, 32, 45);
+      padding: 15px 30px;
+      position: sticky;
+      top: 0;
       z-index: 1000;
-      margin-bottom: 20px;
     }
 
     .logo a {
@@ -57,11 +53,6 @@
       text-decoration: none;
       color: #faf3f3;
       font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links a:hover {
-      color: #000;
     }
 
     .search-container {
@@ -75,17 +66,11 @@
       border-radius: 20px;
       outline: none;
       width: 300px;
-      transition: all 0.3s ease;
     }
 
-    .search-bar:focus {
-      border-color: #888;
-      width: 350px;
-    }
-    
     .search-button {
       color: aliceblue;
-      background-color:rgb(116, 34, 47);
+      background-color: rgb(116, 34, 47);
       border: none;
       padding: 6px 10px;
       cursor: pointer;
@@ -97,314 +82,139 @@
       display: flex;
       align-items: center;
       gap: 20px;
-      font-size: 1.1rem;
     }
 
     .nav-icons a {
       color: #fff7f7;
       text-decoration: none;
-      transition: transform 0.2s ease;
       display: flex;
       align-items: center;
       gap: 5px;
     }
 
-    .nav-icons a:hover {
-      transform: scale(1.05);
+    /* Page Content */
+    .items-container {
+      padding: 40px 30px;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
     }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color:pink;
+    .top-bar h2 {
+      color: var(--text-dark);
+      font-size: 1.8rem;
     }
 
-    h1 {
-      background-color: pink;
-      color: #6a1b4d;
-      text-align: center;
-      padding: 15px;
-      font-size: 28px;
-    }
-
-    .banner {
-      background-color: #6e0b25;
-      text-align: center;
-      padding: 12px;
-      margin: 10px;
+    .upload-btn {
+      background-color: var(--accent);
       color: white;
-      font-size: 16px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 12px;
-      padding: 12px;
-    }
-
-    .box {
-      position: relative;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 16px;
-      cursor: pointer;
-    }
-
-    .box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(70%);
-    }
-
-    .box p {
-      position: absolute;
-      bottom: 0;
-      background: rgba(0, 0, 0, 0.4);
-      color: white;
-      width: 100%;
-      text-align: center;
-      padding: 6px;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 12px;
+      text-decoration: none;
       font-weight: bold;
-      font-size: 18px;
+      transition: all 0.3s ease;
     }
 
-    .section {
-      display: none;
-      padding: 12px;
+    .upload-btn:hover {
+      background-color: var(--dark-accent);
+      transform: scale(1.03);
     }
 
-    .section h3 {
-      color: palevioletred;
-      font-size: 20px;
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .item-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(204, 134, 147, 0.3);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .item-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(204, 134, 147, 0.5);
+    }
+
+    .item-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
       margin-bottom: 10px;
     }
 
-    .items {
-      display: flex;
-      overflow-x: auto;
-      gap: 12px;
-    }
-
-    .card {
-      min-width: 180px;
-      width: 250px;
-      height: 320px;
-      background: white;
-      border-radius: 10px;
-      padding: 8px;
-      text-align: center;
-    }
-
-    .card img {
-      width: 100%;
-      height: 85%;
-      object-fit: cover;
+    .status {
+      font-weight: 600;
+      color: var(--text-dark);
+      background-color: #ffe9ee;
+      padding: 6px 10px;
       border-radius: 8px;
+      display: inline-block;
+      font-size: 0.95rem;
     }
 
-    .card p {
-      font-size: 14px;
-      margin-top: 6px;
+    @media (max-width: 600px) {
+      .search-bar {
+        width: 180px;
+      }
+
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
     }
   </style>
-  <link rel="stylesheet" href="https://kit.fontawesome.com/4ca844b3a8.css" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/4ca844b3a8.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-    <header>
-        <nav class="navbar">
-            <div class="logo">
-                <a href="#">Thrift Haven</a>
-            </div>
-
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-            </ul>
-
-            <div class="search-container">
-                <input type="text" placeholder="Search for products..." class="search-bar">
-                <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-
-            <div class="nav-icons">
-                <a href="#account" class="account-icon" title="Account"> <i class="fa-solid fa-user"></i>Account  &nbsp&nbsp</a>
-                <a href="#cart" class="cart-icon" title="Cart"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
-            </div>
-        </nav>
-    </header>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-  <div class="banner">Why buy new? Thrift it, love it, flaunt it!</div>
-
-  <div class="grid">
-    <div class="box" onclick="show('women')">
-      <img src="https://img.freepik.com/premium-photo/fashionable-woman-neon-pink-asymmetrical-top-pants-set-against-matching-neon-pink-backdrop-portraying-modern-lifestyle-vibrant-style_171965-66482.jpg" />
-      <p>Women</p>
+  <nav class="navbar">
+    <div class="logo"><a href="#">Thrift Haven</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <div class="search-container">
+      <input type="text" placeholder="Search for products..." class="search-bar">
+      <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
-    <div class="box" onclick="show('men')">
-      <img src="https://img.freepik.com/free-photo/portrait-attractive-man-wearing-specs-looking-far-away-isolated-dark-neon-purple-color-background_231208-14363.jpg" />
-      <p>Men</p>
+    <div class="nav-icons">
+      <a href="#account"><i class="fa-solid fa-user"></i> Account</a>
+      <a href="#cart"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
     </div>
-    <div class="box" onclick="show('kids')">
-      <img src="https://cdn.webshopapp.com/shops/59317/files/433087475/1600x900x1/image.jpg" />
-      <p>Children</p>
-    </div>
-    <div class="box" onclick="show('accessories')">
-      <img src="https://www.shutterstock.com/shutterstock/videos/1107463929/thumb/1.jpg?ip=x480" />
-      <p>Accessories</p>
-    </div>
-  </div>
+  </nav>
 
-  <div id="women" class="section">
-    <h3>Women's Collection</h3>
-    <div class="items">
-      <div class="card">
-        <img src="https://midnightglamour.com/cdn/shop/files/JULIE-DOUCHE-AFTER-FIVE-HOT-PINK-COCKTAIL-DRESS-W-HUGE-FLOWER91_1024x1024.jpg?v=1697388834" />
-        <p>Pink Dress</p>
-        <p class="price">Rs340.99</p>
-        <button class="add-to-cart">Add to Cart</button>
+  <div class="items-container">
+    <div class="top-bar">
+      <h2>My Listed Items</h2>
+      <a href="upload-item.html" class="upload-btn">+ Upload More Items</a>
+    </div>
+
+    <div class="items-grid">
+      <div class="item-card">
+        <img src="https://via.placeholder.com/250x220" alt="Item 1">
+        <p class="status">Pending for Online Verification</p>
       </div>
-      <div class="card">
-        <img src="https://media.istockphoto.com/id/1477181752/photo/fashion-mockup-or-kaleidoscope-and-a-woman-in-studio-isolated-on-a-white-background-with.jpg?s=612x612&w=0&k=20&c=thfdCfNRVXAY8jXV3KH0ELtN4MyOGn_5grZrf42z484=" />
-        <p>Black Dress</p>
-        <p class="price">Rs540</p>
-        <button class="add-to-cart">Add to Cart</button>
+      <div class="item-card">
+        <img src="https://via.placeholder.com/250x220" alt="Item 2">
+        <p class="status">Collected for Offline Verification</p>
       </div>
-      <div class="card">
-        <img src="https://images-cdn.ubuy.co.in/66a8fe6e97cb431332343590-womens-cute-hoodies-pink-hoodie.jpg" />
-        <p>Graphic Hoodie</p>
-        <p class="price">Rs700</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://img.freepik.com/premium-photo/african-young-girl-s-portrait-dark-blue-studio-background-pink-neon-light_489646-2853.jpg" />
-        <p>Blue shorts</p>
-        <p class="price">Rs670</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://img.freepik.com/free-photo/full-length-portrait-attractive-woman-wearing-black-tracksuit-isolated-purple-wall_231208-384.jpg?t=st=1743532692~exp=1743536292~hmac=27f84438a7c7e635cafdecf134e49b9bc6a2e7566866bcf11f8696a68bc93e75" />
-        <p>Gym wear</p>
-        <p class="price">Rs580</p>
-        <button class="add-to-cart">Add to Cart</button>
+      <div class="item-card">
+        <img src="https://via.placeholder.com/250x220" alt="Item 3">
+        <p class="status">Verified & Live</p>
       </div>
     </div>
   </div>
-
-  <div id="men" class="section">
-    <h3>Men's Collection</h3>
-    <div class="items">
-      <div class="card">
-        <img src="https://images.pexels.com/photos/8864443/pexels-photo-8864443.jpeg" />
-        <p>Cool T-shirt</p>
-        <p class="price">Rs300</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://img.freepik.com/free-photo/neon-light-studio-portrait-serious-man-model-with-mustaches-beard-sunglasses_231208-14355.jpg" />
-        <p>Leather Jacket</p>
-        <p class="price">Rs1200</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://img.freepik.com/free-photo/man-portrait-with-blue-lights-visual-effects_23-2149419475.jpg" />
-        <p>Black hood</p>
-        <p class="price">Rs780</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://media.istockphoto.com/id/1134840848/photo/handsome-young-man-wearing-a-white-t-shirt.jpg?s=612x612&w=0&k=20&c=N6OpOtEC5AGMDo29D_6FcNmKQuFm7uFtFAX2OWst818=" />
-        <p>Basic white tee</p>
-        <p class="price">Rs350</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://img.freepik.com/premium-photo/green-light-fashion-man-studio-isolated-green-background-beauty-neon-light-male-model-from-brazil-with-idea-thinking-contemplating-about-cool-designer-jacket-stylish-outfit_590464-101386.jpg" />
-        <p>White blazer</p>
-        <p class="price">Rs999</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="kids" class="section">
-    <h3>Children's Collection</h3>
-    <div class="items">
-      <div class="card">
-        <img src="https://thumbs.dreamstime.com/b/charming-little-girl-kid-casual-style-clothes-isolated-over-cyan-color-background-white-neon-light-concept-nice-cool-251939605.jpg" />
-        <p>Frill Top</p>
-        <p class="price">Rs337</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://www.foreverkidz.in/cdn/shop/products/TheRaincoatNeonDress_2dac185e-f764-4f2c-af4d-da759b61e4de.jpg?crop=center&height=4700&v=1658553868&width=3056" />
-        <p>Skirt Top Set</p>
-        <p class="price">Rs345</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://st5.depositphotos.com/3917667/64044/i/450/depositphotos_640448892-stock-photo-music-little-smiling-girl-child.jpg" />
-        <p>Black white strips dress</p>
-        <p class="price">Rs800</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://www.foreverkidz.in/cdn/shop/products/DSC00142.jpg?crop=center&height=4386&v=1661495070&width=3133" />
-        <p>Rainbow birthday dress</p>
-        <p class="price">Rs440</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://t3.ftcdn.net/jpg/02/44/60/40/360_F_244604069_hFtNBPLdVHttzHxsJmEjziO9FOJ08hRf.jpg" />
-        <p>Pair dress</p>
-        <p class="price">Rs700</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-    </div>
-  </div>
-
-  <div id="accessories" class="section">
-    <h3>Accessories</h3>
-    <div class="items">
-      <div class="card">
-        <img src="https://media.istockphoto.com/id/1206894395/photo/top-view-photo-of-fashionable-leather-handbag-80s-synth-wave-and-retrowave-glowing-triangle.jpg?s=612x612&w=0&k=20&c=DCBvcdZtmE0_GFxZCkqvOQGLPaKJn2iulNGKHGGyu3E=" />
-        <p>Stylish Bag</p>
-        <p class="price">Rs480</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card">
-        <img src="https://img.freepik.com/free-photo/teenager-light-movie-projector_23-2149489789.jpg" />
-        <p>Sunglasses</p>
-        <p class="price">Rs250</p>
-        <button class="add-to-cart">Add to Cart</button>
-      </div>
-      <div class="card" style="position: relative;">
-        <img src="https://st2.depositphotos.com/1793519/50734/i/450/depositphotos_507343692-stock-photo-render-abstract-pink-blue-neon.jpg" style="width: 100%; height: 85%; object-fit: cover; filter: blur(4px); border-radius: 8px;">
-        <p style="position: absolute; bottom: 10px; width: 100%; font-size: 14px; text-align: center;">New accessory to be out soon. Stay connected.</p>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    function show(id) {
-      let all = document.querySelectorAll('.section');
-      all.forEach(sec => sec.style.display = "none");
-      document.getElementById(id).style.display = "block";
-    }
-  </script>
-
 </body>
-  </html>
+</html>
