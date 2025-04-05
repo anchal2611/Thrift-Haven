@@ -6,37 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clothing Store</title>
     <style>
-        /* General Reset */
 
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Navbar Styles */
+
 nav {
-  position: fixed; /* Fix navbar at top */
+  position: fixed; 
   top: 0;
   left: 0;
-  width: 100%; /* Full width */
-  background-color: #6e0b25; /* Adjust the color if needed */
+  width: 100%;
+  background-color: #6e0b25;
   color: white;
   padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Ensure it stays on top */
+  z-index: 1000; 
 }
 
-/* Push content below navbar */
+
 body {
   margin: 0;
-  padding-top: 70px; /* Adjust based on navbar height */
+  padding-top: 70px;
   background-color: #ffe6ee;
 }
 
-/* Brand Name */
+
 .logo a {
     font-size: 1.8rem;
     font-weight: bold;
@@ -44,7 +43,7 @@ body {
     text-decoration: none;
 }
 
-/* Navigation Links */
+
 .nav-links {
     list-style: none;
     display: flex;
@@ -62,7 +61,6 @@ body {
     color: #000;
 }
 
-/* Search Container */
 .search-container {
     display: flex;
     align-items: center;
@@ -91,7 +89,6 @@ body {
     font-size: 1rem;
 }
 
-/* Icons (Account & Cart) */
 .nav-icons {
     display: flex;
     align-items: center;
@@ -111,7 +108,8 @@ body {
 .nav-icons a:hover {
     transform: scale(1.05);
 }
-/* General Reset */
+
+        
 * {
     margin: 0;
     padding: 0;
@@ -130,7 +128,7 @@ body {
       padding: 30px 10px;
     }
 
-    /* About Section */
+
     .about-section {
       display: flex;
       flex-direction: column;
@@ -139,7 +137,6 @@ body {
       min-height: 100vh;
     }
 
-    /* Title Styling */
     h2 {
       font-size: 2.5rem;
       font-weight: 600;
@@ -147,7 +144,6 @@ body {
       margin-bottom: 10px;
     }
 
-    /* Neumorphism Content Box */
     .about-container {
       max-width: 800px;
       background: rgba(255, 255, 255, 0.7);
@@ -161,8 +157,8 @@ body {
       font-size: 1.1rem;
       font-weight: 400;
       line-height: 1.8;
-        backdrop-filter: blur(15px); /* Stronger blur */
-    -webkit-backdrop-filter: blur(15px); /* Safari support */
+        backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px); 
       color: #444;
       margin-bottom: 12px;
     }
@@ -192,28 +188,28 @@ body {
 <body>
     <header>
         <nav class="navbar">
-            <!-- Brand Name -->
+        
             <div class="logo">
                 <a href="#">Thrift Haven</a>
             </div>
 
-            <!-- Navigation Links (Shop Removed) -->
+            
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Shop.html">Shop</a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
             </ul>
 
-            <!-- Search Bar -->
+            
             <div class="search-container">
                 <input type="text" placeholder="Search for products..." class="search-bar">
                 <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
 
-            <!-- Account & Cart with Text -->
+            
             <div class="nav-icons">
-                <a href="#account" class="account-icon" title="Account"> <i class="fa-solid fa-user"></i></i>Account  &nbsp&nbsp</a>
+                <a href="buyer-profile.html" class="account-icon" title="Account"> <i class="fa-solid fa-user"></i></i>Account  &nbsp&nbsp</a>
                 
                 <a href="cart.html" class="cart-icon" title="Cart"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
             </div>
