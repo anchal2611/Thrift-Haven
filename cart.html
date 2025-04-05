@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - Thrift Haven</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4ca844b3a8.js" crossorigin="anonymous"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, #ffe6eb, #fddde6);
+      color: #5c1a1b;
+    }
+
+    /* === NEW NAVBAR === */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: rgb(112, 32, 45);
+      padding: 15px 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      flex-wrap: wrap;
+    }
+
+    .logo a {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #eee0e0;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #faf3f3;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #000;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      margin: 10px 0;
+    }
+
+    .search-bar {
+      padding: 8px 16px;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      outline: none;
+      width: 250px;
+      transition: all 0.3s ease;
+    }
+
+    .search-bar:focus {
+      border-color: #888;
+      width: 280px;
+    }
+
+    .search-button {
+      color: aliceblue;
+      background-color: rgb(116, 34, 47);
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+      border-radius: 50%;
+      font-size: 1rem;
+      margin-left: 8px;
+    }
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+
+    .nav-icons a {
+      color: #fff7f7;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-icons a:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+      .search-bar {
+        width: 200px;
+      }
+
+      .search-bar:focus {
+        width: 240px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .nav-icons {
+        justify-content: center;
+      }
+    }
+
+    /* === CART PAGE STYLING (unchanged) === */
+    .container {
+      max-width: 1000px;
+      margin: 120px auto 40px;
+      background-color: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #ffd1dc;
+    }
+
+    .item-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .item-info img {
+      width: 70px;
+      height: 70px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .price {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .quantity {
+      padding: 5px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .summary {
+      text-align: right;
+      margin-top: 30px;
+    }
+
+    .btn {
+      background-color: #800000;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .btn:hover {
+      background-color: #5c1a1b;
+    }
+
+    @media (max-width: 600px) {
+      .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      .summary {
+        text-align: left;
+      }
+      .search-bar {
+        width: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Replaced Navbar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">Thrift Haven</a>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#shop">Shop</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+
+      <div class="search-container">
+        <input type="text" placeholder="Search for products..." class="search-bar" />
+        <button class="search-button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+      <div class="nav-icons">
+        <a href="#account" title="Account">
+          <i class="fa-solid fa-user"></i> Account
+        </a>
+        <a href="#cart" title="Cart">
+          <i class="fa-solid fa-cart-shopping"></i> Cart
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Cart -->
+  <div class="container">
+    <h1>Your Cart</h1>
+    <div id="cart-items"></div>
+
+    <!-- Cart Summary -->
+    <div class="summary">
+      <p>Subtotal: ₹<span id="subtotal">0</span></p>
+      <p>Shipping: ₹100</p>
+      <p><strong>Total: ₹<span id="total">0</span></strong></p>
+      <button class="btn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    let cartItems = [
+      { id: 1, name: "Floral Summer Dress", size: "M", price: 499, quantity: 1, image: "sh/cloth1.png" },
+      { id: 2, name: "Denim Jacket", size: "L", price: 899, quantity: 1, image: "sh/cloth2.png" },
+      { id: 3, name: "Vintage Leather Bag", size: "-", price: 1299, quantity: 1, image: "sh/cloth3.png" },
+      { id: 4, name: "Classic Sneakers", size: "8", price: 1499, quantity: 1, image: "sh/cloth4.png" }
+    ];
+
+    function updateCart() {
+      const cartContainer = document.getElementById("cart-items");
+      const subtotalEl = document.getElementById("subtotal");
+      const totalEl = document.getElementById("total");
+
+      cartContainer.innerHTML = cartItems.map(item => `
+        <div class="cart-item">
+          <div class="item-info">
+            <img src="${item.image}" alt="${item.name}" />
+            <div>
+              <h4>${item.name}</h4>
+              <p>Size: ${item.size}</p>
+            </div>
+          </div>
+          <div>
+            <select class="quantity" data-id="${item.id}" onchange="changeQuantity(${item.id}, this.value)">
+              ${[...Array(10).keys()].map(i => `<option value="${i + 1}" ${item.quantity === i + 1 ? "selected" : ""}>${i + 1}</option>`).join("")}
+            </select>
+          </div>
+          <div class="price">₹<span id="price-${item.id}">${item.price * item.quantity}</span></div>
+        </div>
+      `).join("");
+
+      let subtotal = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      subtotalEl.textContent = subtotal;
+      totalEl.textContent = subtotal + 100;
+    }
+
+    function changeQuantity(id, newQty) {
+      const item = cartItems.find(i => i.id === id);
+      if (item) {
+        item.quantity = parseInt(newQty);
+        updateCart();
+      }
+    }
+
+    updateCart();
+  </script>
+
+</body>
+</html>
