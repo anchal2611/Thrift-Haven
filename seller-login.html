@@ -5,8 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Seller Login | Thrift Haven</title>
 
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="Thrift_Haven.png">
 
+  <!-- Firebase SDK -->
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 
@@ -112,6 +114,7 @@
   </form>
 
   <script>
+    // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyBb7PTdtdau78OTnxWWyvMO7CUswRNeGeA",
       authDomain: "thrifthaven-6a841.firebaseapp.com",
@@ -122,9 +125,11 @@
       measurementId: "G-923BG1CPE5"
     };
 
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
+    // Login functionality
     document.getElementById("login-form").addEventListener("submit", function (e) {
       e.preventDefault();
 
@@ -139,8 +144,11 @@
         .then((userCredential) => {
           messageDiv.textContent = "Login successful!";
           messageDiv.classList.add("success");
-          // Redirect to seller dashboard (update path accordingly)
-          window.location.href = "seller-dashboard.html";
+
+          // ✅ Redirect to seller-home.html
+          setTimeout(() => {
+            window.location.href = "seller-home.html";
+          }, 1000);
         })
         .catch((error) => {
           messageDiv.textContent = error.message;
@@ -148,6 +156,7 @@
         });
     });
 
+    // Password reset
     function forgotPassword() {
       const email = prompt("Enter your registered email:");
       if (email) {
@@ -157,6 +166,7 @@
       }
     }
 
+    // Redirect to seller signup page
     function redirectToSignup() {
       window.location.href = "seller-signup.html";
     }
@@ -164,4 +174,3 @@
 
 </body>
 </html>
-
