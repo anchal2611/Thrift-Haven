@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Buyer Profile | Thrift Haven</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="Thrift_Haven.png" type="image/png" />
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+  <script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBb7PTdtdau78OTnxWWyvMO7CUswRNeGeA",
+    authDomain: "thrifthaven-6a841.firebaseapp.com",
+    projectId: "thrifthaven-6a841",
+    storageBucket: "thrifthaven-6a841.firebasestorage.app",
+    messagingSenderId: "542568896680",
+    appId: "1:542568896680:web:4e4c9acfa09aefaa424a9d",
+    measurementId: "G-923BG1CPE5"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  </script>
+
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #F0B0A1, #F2E7C9);
+      margin: 0;
+      padding: 0;
+    }
+    .profile-container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #8B0000;
+    }
+    .section {
+      margin: 30px 0;
+    }
+    .section h3 {
+      color: #8B0000;
+      margin-bottom: 10px;
+    }
+    .section p {
+      color: #444;
+    }
+    button {
+      background-color: #C5A2C8;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      margin: 10px 5px;
+      cursor: pointer;
+    }
+    .top-right {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="profile-container">
+    <div class="top-right">
+      <button onclick="logout()">Logout</button>
+    </div>
+    <h2>👩‍🦰 Buyer Profile</h2>
+    <div class="section" id="user-info">
+      <h3>Profile Info</h3>
+      <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+      <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+    </div>
+
+    <div class="section">
+      <h3>Saved Payment Details</h3>
+      <p>💳 Card ending in **** 1234</p>
+    </div>
+
+    <div class="section">
+      <h3>Cart</h3>
+      <p>🛒 2 items in cart</p>
+    </div>
+
+    <div class="section">
+      <h3>Previous Orders</h3>
+      <p>📦 Order #10245 - Delivered</p>
+      <p>📦 Order #10101 - In Transit</p>
+    </div>
+
+    <div class="section">
+      <button onclick="editProfile()">Edit Profile</button>
+      <button onclick="viewProfile()">View Profile</button>
+    </div>
+  </div>
+
+  <script>
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        document.getElementById("email").textContent = user.email;
+        document.getElementById("name").textContent = user.displayName || "Anonymous Buyer";
+      } else {
+        window.location.href = "buyer-login.html";
+      }
+    });
+
+    function logout() {
+      auth.signOut().then(() => {
+        window.location.href = "index.html";
+      });
+    }
+
+    function editProfile() {
+      alert("Edit Profile clicked!");
+    }
+
+    function viewProfile() {
+      alert("View Profile clicked!");
+    }
+  </script>
+</body>
+</html>
