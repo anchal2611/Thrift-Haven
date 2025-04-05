@@ -140,8 +140,8 @@
         .then(() => {
           messageDiv.textContent = "Login successful!";
           messageDiv.classList.add("success");
-          // Redirect to buyer dashboard
-          window.location.href = "buyer-dashboard.html";
+          // ✅ Redirect to home.html
+          window.location.href = "home.html";
         })
         .catch((error) => {
           messageDiv.textContent = error.message;
