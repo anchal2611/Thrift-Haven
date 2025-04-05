@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Store</title>
+    <style>
+        /* General Reset */
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar Styles */
+nav {
+  position: fixed; /* Fix navbar at top */
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  background-color: #6e0b25; /* Adjust the color if needed */
+  color: white;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+/* Push content below navbar */
+body {
+  margin: 0;
+  padding-top: 70px; /* Adjust based on navbar height */
+  background-color: #ffe6ee;
+}
+
+/* Brand Name */
+.logo a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #eee0e0;
+    text-decoration: none;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #faf3f3;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #000;
+}
+
+/* Search Container */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    outline: none;
+    width: 300px;
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+    border-color: #888;
+    width: 350px;
+}
+.search-button {
+    color: aliceblue;
+    background-color:rgb(116, 34, 47);
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1rem;
+}
+
+/* Icons (Account & Cart) */
+.nav-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1rem;
+}
+
+.nav-icons a {
+    color: #fff7f7;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-icons a:hover {
+    transform: scale(1.05);
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffe6ee;
+      color: #333;
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    /* About Section */
+    .about-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* Title Styling */
+    h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #b0235c;
+      margin-bottom: 10px;
+    }
+
+    /* Neumorphism Content Box */
+    .about-container {
+      max-width: 800px;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 8px 8px 16px #d1a7b6, -8px -8px 16px #fff;
+      backdrop-filter: blur(10px);
+    }
+
+    .about-container p {
+      font-size: 1.1rem;
+      font-weight: 400;
+      line-height: 1.8;
+        backdrop-filter: blur(15px); /* Stronger blur */
+    -webkit-backdrop-filter: blur(15px); /* Safari support */
+      color: #444;
+      margin-bottom: 12px;
+    }
+
+    .about-container strong {
+      color: #b0235c;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .about-container {
+        padding: 20px;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+    }
+
+    </style>
+    <link rel="stylesheet" href="https://kit.fontawesome.com/4ca844b3a8.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/4ca844b3a8.js" crossorigin="anonymous">
+    </script>
+
+  
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <!-- Brand Name -->
+            <div class="logo">
+                <a href="#">Thrift Haven</a>
+            </div>
+
+            <!-- Navigation Links (Shop Removed) -->
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+
+            <!-- Search Bar -->
+            <div class="search-container">
+                <input type="text" placeholder="Search for products..." class="search-bar">
+                <button class="search-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <!-- Account & Cart with Text -->
+            <div class="nav-icons">
+                <a href="#account" class="account-icon" title="Account"> <i class="fa-solid fa-user"></i></i>Account  &nbsp&nbsp</a>
+                
+                <a href="cart.html" class="cart-icon" title="Cart"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="about-section">
+        <h2>About Us</h2>
+        <div class="about-container">
+            
+            <p>
+                Welcome to <strong>Thrift Haven</strong>, your trusted platform for buying and selling second-hand clothes. 
+                We are committed to making fashion <strong>affordable</strong>, <strong>accessible</strong>, and <strong>sustainable</strong>. 
+            </p>
+            <p>
+                Our mission is to provide a budget-friendly way to refresh your wardrobe while ensuring that quality fashion is available to everyone. 
+                With a user-friendly platform, we make second-hand shopping <strong>accessible</strong> to all, helping you discover unique styles effortlessly.
+            </p>
+            <p>
+                At Thrift Haven, we believe that looking good shouldn't cost the Earth. By giving pre-loved clothes a second life, we promote 
+                <strong>sustainability</strong> by reducing waste and supporting eco-friendly fashion choices.
+            </p>
+            <p>
+                Join our community of conscious shoppers and make a difference — one outfit at a time!  
+            </p>
+        </div>
+      </section>
+</body>
+</html>
+
