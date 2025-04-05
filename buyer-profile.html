@@ -5,108 +5,219 @@
   <title>Buyer Profile | Thrift Haven</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" href="Thrift_Haven.png" type="image/png" />
+  <script src="https://kit.fontawesome.com/4ca844b3a8.js" crossorigin="anonymous"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
-
-  <script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyBb7PTdtdau78OTnxWWyvMO7CUswRNeGeA",
-    authDomain: "thrifthaven-6a841.firebaseapp.com",
-    projectId: "thrifthaven-6a841",
-    storageBucket: "thrifthaven-6a841.firebasestorage.app",
-    messagingSenderId: "542568896680",
-    appId: "1:542568896680:web:4e4c9acfa09aefaa424a9d",
-    measurementId: "G-923BG1CPE5"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-  const auth = firebase.auth();
-  </script>
-
-
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to right, #F0B0A1, #F2E7C9);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fcc8d1, #d14d72);
       margin: 0;
       padding: 0;
     }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgb(112, 32, 45);
+      padding: 15px 30px;
+      flex-wrap: wrap;
+    }
+
+    .logo a {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #ffeef1;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #ffeef1;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-icons a {
+      color: #ffeef1;
+      text-decoration: none;
+    }
+
     .profile-container {
       max-width: 800px;
-      margin: 50px auto;
-      padding: 30px;
+      margin: 40px auto;
       background-color: #fff;
+      padding: 30px;
       border-radius: 20px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
-    h2 {
-      text-align: center;
-      color: #8B0000;
+
+    .profile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .section {
-      margin: 30px 0;
+
+    .profile-header h2 {
+      color: #d14d72;
+      margin: 0;
     }
-    .section h3 {
-      color: #8B0000;
-      margin-bottom: 10px;
-    }
-    .section p {
-      color: #444;
-    }
-    button {
-      background-color: #C5A2C8;
-      color: white;
-      padding: 10px 20px;
+
+    .logout-btn {
+      background-color: #d14d72;
+      color: #fff;
+      padding: 10px 18px;
       border: none;
-      border-radius: 10px;
-      margin: 10px 5px;
+      border-radius: 8px;
       cursor: pointer;
     }
-    .top-right {
-      text-align: right;
+
+    .profile-picture {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .profile-picture img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #d14d72;
+    }
+
+    .profile-picture input {
+      margin-top: 10px;
+    }
+
+    .section {
+      background-color: #fff0f3;
+      border-left: 5px solid #d14d72;
+      padding: 20px;
+      border-radius: 12px;
+      margin-bottom: 25px;
+    }
+
+    .section h3 {
+      margin-bottom: 15px;
+      color: #70202D;
+    }
+
+    .icon {
+      margin-right: 8px;
+      color: #d14d72;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .action-buttons button {
+      background-color: #fff;
+      color: #d14d72;
+      padding: 10px 20px;
+      border: 2px solid #d14d72;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .action-buttons button:hover {
+      background-color: #d14d72;
+      color: #fff;
+    }
+
+    .action-buttons i {
+      font-size: 1.1rem;
     }
   </style>
 </head>
 <body>
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">Thrift Haven</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div class="nav-icons">
+      <a href="#"><i class="fa-solid fa-user"></i> Account</a>
+      <a href="#"><i class="fa-solid fa-cart-shopping"></i> Cart</a>
+    </div>
+  </nav>
 
   <div class="profile-container">
-    <div class="top-right">
-      <button onclick="logout()">Logout</button>
+    <div class="profile-header">
+      <h2><i class="fa-solid fa-user icon"></i> Buyer Profile</h2>
+      <button class="logout-btn" onclick="logout()">Logout</button>
     </div>
-    <h2>👩‍🦰 Buyer Profile</h2>
-    <div class="section" id="user-info">
-      <h3>Profile Info</h3>
+
+    <div class="profile-picture">
+      <img id="profile-img" src="https://via.placeholder.com/130" alt="Profile Picture" />
+      <input type="file" accept="image/*" onchange="previewImage(event)" />
+    </div>
+
+    <div class="section">
+      <h3><i class="fa-solid fa-circle-user icon"></i> Profile Info</h3>
       <p><strong>Name:</strong> <span id="name">Loading...</span></p>
       <p><strong>Email:</strong> <span id="email">Loading...</span></p>
     </div>
 
     <div class="section">
-      <h3>Saved Payment Details</h3>
-      <p>💳 Card ending in **** 1234</p>
+      <h3><i class="fa-solid fa-credit-card icon"></i> Saved Payment Details</h3>
+      <p>Card ending in ** 1234</p>
     </div>
 
     <div class="section">
-      <h3>Cart</h3>
-      <p>🛒 2 items in cart</p>
+      <h3><i class="fa-solid fa-cart-shopping icon"></i> Cart</h3>
+      <p>2 items in cart</p>
     </div>
 
     <div class="section">
-      <h3>Previous Orders</h3>
-      <p>📦 Order #10245 - Delivered</p>
-      <p>📦 Order #10101 - In Transit</p>
+      <h3><i class="fa-solid fa-box icon"></i> Previous Orders</h3>
+      <p>Order #10245 - Delivered</p>
+      <p>Order #10101 - In Transit</p>
     </div>
 
-    <div class="section">
-      <button onclick="editProfile()">Edit Profile</button>
-      <button onclick="viewProfile()">View Profile</button>
+    <div class="action-buttons">
+      <button onclick="editProfile()"><i class="fa-solid fa-pen-to-square"></i> Edit Profile</button>
+      <button onclick="viewProfile()"><i class="fa-solid fa-eye"></i> View Profile</button>
     </div>
   </div>
 
   <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBb7PTdtdau78OTnxWWyvMO7CUswRNeGeA",
+      authDomain: "thrifthaven-6a841.firebaseapp.com",
+      projectId: "thrifthaven-6a841",
+      storageBucket: "thrifthaven-6a841.appspot.com",
+      messagingSenderId: "542568896680",
+      appId: "1:542568896680:web:4e4c9acfa09aefaa424a9d"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
     auth.onAuthStateChanged(user => {
       if (user) {
         document.getElementById("email").textContent = user.email;
-        document.getElementById("name").textContent = user.displayName || "Anonymous Buyer";
+        document.getElementById("name").textContent = user.displayName || "Buyer";
       } else {
         window.location.href = "buyer-login.html";
       }
@@ -124,6 +235,14 @@
 
     function viewProfile() {
       alert("View Profile clicked!");
+    }
+
+    function previewImage(event) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        document.getElementById("profile-img").src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
     }
   </script>
 </body>
