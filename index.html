@@ -1,94 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thrift Haven</title>
-    <link rel="icon" type="image/png" href="Thrift_Haven.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thrift Haven</title>
+  <link rel="icon" type="image/png" href="Thrift_Haven.png">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-        body {
-            background: linear-gradient(to bottom, #f8d7da, #ffffff);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            flex-direction: column;
-            text-align: center;
-            padding: 20px;
-        }
+    body {
+      background: linear-gradient(to bottom, #f8d7da, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
 
-        .logo img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-        }
+    .logo img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+    }
 
-        h1 {
-            color: #a94442;
-            margin-top: 20px;
-            font-size: 2.8rem;
-        }
+    h1 {
+      color: #a94442;
+      margin-top: 20px;
+      font-size: 2.8rem;
+    }
 
-        p {
-            color: #843534;
-            margin-top: 10px;
-            font-size: 1.4rem;
-        }
+    p {
+      color: #843534;
+      margin-top: 10px;
+      font-size: 1.4rem;
+    }
 
-        .button-container {
-            display: flex;
-            gap: 30px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
+    .button-container {
+      display: flex;
+      gap: 30px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
 
-        .btn {
-            padding: 20px 40px;
-            font-size: 1.4rem;
-            color: white;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            background-color: rgb(112, 32, 45);
-        }
+    .btn {
+      padding: 20px 40px;
+      font-size: 1.4rem;
+      color: white;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-color: rgb(112, 32, 45);
+    }
 
-        .btn:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
-        }
-    </style>
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+    }
+  </style>
 </head>
 <body>
-    <div class="logo">
-        <img src="Thrift_Haven.png" alt="Thrift Haven Logo">
-    </div>
+  <div class="logo">
+    <img src="Thrift_Haven.png" alt="Thrift Haven Logo">
+  </div>
 
-    <h1>Welcome to Thrift Haven</h1>
-    <p>“Why Buy New? Thrift It, Love It, Flaunt It.”</p>
+  <h1>Welcome to Thrift Haven</h1>
+  <p>“Why Buy New? Thrift It, Love It, Flaunt It.”</p>
 
-    <div class="button-container">
-        <button class="btn buy-btn">BUY</button>
-        <button class="btn sell-btn">SELL</button>
-    </div>
+  <div class="button-container">
+    <button class="btn buy-btn">BUY</button>
+    <button class="btn sell-btn">SELL</button>
+  </div>
 
-    <script>
-        document.querySelector('.buy-btn').addEventListener('click', function() {
-            window.location.href = 'buy.html'; // Make sure this page exists
-        });
+  <script>
+    document.querySelector('.buy-btn').addEventListener('click', function () {
+      window.location.href = 'buyer-signup.html';
+    });
 
-        document.querySelector('.sell-btn').addEventListener('click', function() {
-            window.location.href = 'sell.html'; // Make sure this page exists
-        });
-    </script>
+    document.querySelector('.sell-btn').addEventListener('click', function () {
+      window.location.href = 'seller-signup.html';
+    });
+  </script>
 </body>
 </html>
